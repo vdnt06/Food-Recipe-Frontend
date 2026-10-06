@@ -1,0 +1,141 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 97%;
+    --foreground: 200 15% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 15% 20%;
+
+    --primary: 27 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 27 100% 50%;
+
+    --muted: 0 0% 90%;
+    --muted-foreground: 200 5% 50%;
+
+    --accent: 27 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: 27 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 200 15% 25%;
+
+    --sidebar-primary: 27 100% 50%;
+
+    --sidebar-primary-foreground: 0 0% 100%;
+
+    --sidebar-accent: 0 0% 95%;
+
+    --sidebar-accent-foreground: 27 100% 50%;
+
+    --sidebar-border: 0 0% 90%;
+
+    --sidebar-ring: 27 100% 50%;
+  }
+
+  .dark {
+    --background: 200 15% 12%;
+    --foreground: 210 40% 96%;
+
+    --card: 200 15% 18%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 200 15% 18%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 142 56% 50%;
+    --primary-foreground: 200 15% 12%;
+
+    --secondary: 45 86% 18%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 200 15% 25%;
+    --muted-foreground: 210 40% 70%;
+
+    --accent: 27 100% 55%;
+    --accent-foreground: 200 15% 12%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 200 15% 25%;
+    --input: 200 15% 25%;
+    --ring: 142 56% 50%;
+    --sidebar-background: 200 15% 12%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 142 56% 50%;
+    --sidebar-primary-foreground: 200 15% 12%;
+    --sidebar-accent: 45 86% 25%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 200 15% 25%;
+    --sidebar-ring: 142 56% 50%;
+  }
+}
+
+@layer base {
+  /* FIXED: Changed from * to more specific selectors to avoid affecting SVG icons */
+  *:not(svg):not(svg *) {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+  
+  /* Navbar underline hover effect */
+  nav a {
+    position: relative;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: orange;
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+}

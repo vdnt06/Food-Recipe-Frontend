@@ -1,0 +1,951 @@
+/* ==========================================
+   RECIPE LIST PAGE - DARK THEME REDESIGN
+   Matching Homepage Aesthetic
+   ========================================== */
+
+/* ==========================================
+   WRAPPER & BASE STYLES
+   ========================================== */
+.recipe-list-wrapper {
+  background: #0a0a0a;
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+.recipe-hero-section {
+  position: relative;
+  padding: 120px 20px 80px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  overflow: hidden;
+  text-align: center;
+}
+
+.recipe-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.08;
+  background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&h=1080&fit=crop');
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+}
+
+.recipe-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.recipe-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249, 115, 22, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  padding: 8px 20px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f97316;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.recipe-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.recipe-hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* ==========================================
+   SEARCH & FILTER SECTION
+   ========================================== */
+.search-filter-section {
+  padding: 40px 20px 20px;
+  background: linear-gradient(180deg, #0f3460 0%, #0a0a0a 100%);
+}
+
+.search-filter-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Search Bar */
+.search-bar-wrapper {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-new {
+  width: 100%;
+  padding: 16px 50px 16px 50px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+}
+
+.search-input-new::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.search-input-new:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.search-icon-new {
+  position: absolute;
+  left: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.clear-search-new {
+  position: absolute;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.clear-search-new:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Filter Button */
+.filter-button-new {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.filter-button-new:hover {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: #f97316;
+  transform: translateY(-2px);
+}
+
+.filter-badge-new {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.5);
+  animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Sort Dropdown */
+.sort-wrapper-new {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.sort-wrapper-new:hover {
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.sort-label-new {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+.sort-select-new {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  outline: none;
+}
+
+.sort-select-new:focus,
+.sort-select-new:hover {
+  border-color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.sort-select-new option {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+/* ==========================================
+   ACTIVE FILTERS SECTION
+   ========================================== */
+.active-filters-section {
+  padding: 0 20px 20px;
+  background: #0a0a0a;
+}
+
+.active-filters-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.active-filters-list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filters-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  margin-right: 8px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  animation: slideIn 0.3s ease;
+}
+
+.filter-chip-icon {
+  font-size: 14px;
+}
+
+.filter-chip-text {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filter-chip-remove {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.filter-chip-remove:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.clear-all-button {
+  padding: 8px 20px;
+  background: transparent;
+  border: 2px solid rgba(249, 115, 22, 0.4);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f97316;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.clear-all-button:hover {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: #f97316;
+}
+
+/* ==========================================
+   FILTER MODAL
+   ========================================== */
+.filter-modal-overlay-new {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+  padding: 20px;
+}
+
+.filter-modal-new {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-modal-header-new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-modal-title-new {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.filter-modal-close-new {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+
+.filter-modal-close-new:hover {
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
+  transform: rotate(90deg);
+}
+
+.filter-modal-body-new {
+  padding: 32px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.filter-section-new {
+  margin-bottom: 32px;
+}
+
+.filter-section-new:last-child {
+  margin-bottom: 0;
+}
+
+.filter-section-title-new {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 20px 0;
+}
+
+.filter-grid-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.filter-option-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.filter-option-new:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(249, 115, 22, 0.5);
+  transform: translateY(-4px);
+}
+
+.filter-option-new.selected {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.2) 100%);
+  border-color: #f97316;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+}
+
+.filter-option-emoji {
+  font-size: 32px;
+  transition: transform 0.3s ease;
+}
+
+.filter-option-new:hover .filter-option-emoji {
+  transform: scale(1.15);
+}
+
+.filter-option-new.selected .filter-option-emoji {
+  animation: bounce 0.6s ease;
+}
+
+.filter-option-name {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+}
+
+.filter-option-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  background: #f97316;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.filter-modal-footer-new {
+  display: flex;
+  gap: 12px;
+  padding: 24px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-clear-button {
+  flex: 1;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-clear-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.modal-apply-button {
+  flex: 2;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.modal-apply-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.5);
+}
+
+/* ==========================================
+   RESULTS SECTION
+   ========================================== */
+.results-section {
+  padding: 30px 20px 20px;
+  background: #0a0a0a;
+}
+
+.results-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.results-count {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+.results-number {
+  color: #f97316;
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* ==========================================
+   RECIPES GRID
+   ========================================== */
+.recipes-section {
+  padding: 0 20px 60px;
+  background: #0a0a0a;
+}
+
+.recipes-grid-new {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.recipe-card-wrapper {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+/* ==========================================
+   NO RESULTS STATE
+   ========================================== */
+.no-results-section {
+  padding: 80px 20px;
+  background: #0a0a0a;
+}
+
+.no-results-card {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.no-results-icon-new {
+  font-size: 80px;
+  margin-bottom: 24px;
+  opacity: 0.4;
+  animation: float 3s ease-in-out infinite;
+}
+
+.no-results-title-new {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.no-results-text-new {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.reset-filters-button {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reset-filters-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.5);
+}
+
+/* ==========================================
+   PAGINATION
+   ========================================== */
+.pagination-section {
+  padding: 0 20px 80px;
+  background: #0a0a0a;
+}
+
+.pagination-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.pagination-btn {
+  padding: 14px 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: #f97316;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.3);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-info-new {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0 16px;
+}
+
+.pagination-current {
+  color: #f97316;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* ==========================================
+   LOADING STATE
+   ========================================== */
+.loading-container-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.loading-spinner-new {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(249, 115, 22, 0.2);
+  border-top-color: #f97316;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-text-new {
+  margin-top: 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 1024px) {
+  .recipes-grid-new {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipe-hero-section {
+    padding: 100px 20px 60px;
+  }
+
+  .recipe-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .search-filter-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar-wrapper {
+    min-width: 100%;
+    order: 1;
+  }
+
+  .filter-button-new {
+    order: 2;
+    justify-content: center;
+  }
+
+  .sort-wrapper-new {
+    order: 3;
+    justify-content: space-between;
+  }
+
+  .active-filters-list {
+    padding: 14px 18px;
+  }
+
+  .filter-grid-new {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recipes-grid-new {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pagination-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipe-hero-title {
+    font-size: 2rem;
+  }
+
+  .recipe-hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .search-input-new {
+    padding: 14px 45px 14px 45px;
+    font-size: 15px;
+  }
+
+  .filter-button-new,
+  .sort-wrapper-new {
+    padding: 14px 20px;
+  }
+
+  .filter-modal-new {
+    border-radius: 20px 20px 0 0;
+    max-height: 90vh;
+  }
+
+  .filter-modal-header-new {
+    padding: 24px;
+  }
+
+  .filter-modal-title-new {
+    font-size: 22px;
+  }
+
+  .filter-modal-body-new {
+    padding: 24px;
+  }
+
+  .filter-grid-new {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .filter-option-new {
+    padding: 16px 12px;
+  }
+
+  .filter-option-emoji {
+    font-size: 28px;
+  }
+
+  .no-results-card {
+    padding: 40px 30px;
+  }
+
+  .no-results-icon-new {
+    font-size: 64px;
+  }
+
+  .no-results-title-new {
+    font-size: 24px;
+  }
+}
